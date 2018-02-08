@@ -6,13 +6,22 @@ const Input = ({
   value,
   onChangeText,
   placeholder,
-  secureTextEntry
+  secureTextEntry,
+  noLabel
 }) => {
-  const { inputStyle, labelStyle, containerStyle } = styles;
+  let { inputStyle, labelStyle, containerStyle } = styles;
+
+  renderLabel = () => {
+    if (noLabel) {
+      containerStyle = { ...containerStyle, flex: 3 };
+      return null;
+    }
+    return <Text style={labelStyle}>{label}</Text>;
+  };
 
   return (
     <View style={containerStyle}>
-      <Text style={labelStyle}>{label}</Text>
+      {this.renderLabel()}
       <TextInput
         secureTextEntry={secureTextEntry}
         placeholder={placeholder}

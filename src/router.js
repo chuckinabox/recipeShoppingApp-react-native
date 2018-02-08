@@ -2,6 +2,7 @@ import React from "react";
 import { Scene, Router, Actions } from "react-native-router-flux";
 
 import HomeContainer from "./containers/HomeContainer";
+import OneRecipeContainer from "./containers/OneRecipeContainer";
 
 const RouterComponent = () => {
   return (
@@ -9,10 +10,19 @@ const RouterComponent = () => {
       <Scene key="root" hideNavBar>
         <Scene key="loggedout">
           <Scene
+            leftTitle="Signup"
+            onLeft={() => {}}
+            rightTitle="Login"
+            onRight={() => {}}
             key="loggedoutHome"
             component={HomeContainer}
-            title="RecipeShoppingApp.com"
+            title="RecipeShopping"
             initial
+          />
+          <Scene
+            key="loggedoutRecipe"
+            component={OneRecipeContainer}
+            hideNavBar
           />
         </Scene>
       </Scene>
